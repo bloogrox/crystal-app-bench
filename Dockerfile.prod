@@ -1,0 +1,15 @@
+FROM crystallang/crystal as builder
+
+WORKDIR /project
+
+COPY shard.yml ./shard.yml
+
+COPY src ./src
+
+RUN shards install
+
+RUN shards build --production
+
+EXPOSE 80
+
+CMD ["./bin/hello"]

@@ -1,0 +1,22 @@
+name: .
+version: 0.1.0
+
+authors:
+  - your-name-here <your-email-here>
+
+targets:
+  hello:
+    main: src/hello.cr
+
+dependencies:
+  redis:
+    github: stefanwille/crystal-redis
+    version: ~> 2.1.1
+
+crystal: 0.27.0
+
+license: MIT
+
+# dependencies:
+#   kemal:
+#     github: kemalcr/kemal

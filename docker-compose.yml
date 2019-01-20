@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+
+  web:
+    build: .
+    image: sandbox/crystal
+    # command: crystal run src/hello.cr
+    command: ./bin/hello
+    volumes:
+      - ./src:/project/src
+    ports:
+      - 8000:80
+    depends_on:
+      - redis
+
+
+  redis:
+    image: redis
+
+
+  web-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: sandbox/crystal-prod
+    # volumes:
+    #   - ./src:/project/src
+    ports:
+      - 8000:80
+    depends_on:
+      - redis
